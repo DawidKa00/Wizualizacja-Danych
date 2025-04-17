@@ -5,6 +5,8 @@
 Repozytorium zawiera zadania wykonane podczas zajęć z wizualizacji danych. Wykorzystano bibliotekę Plotly do tworzenia
 interaktywnych wykresów.
 
+Dane [COVID-19](https://www.kaggle.com/datasets/caesarmario/our-world-in-data-covid19-dataset) z www.kaggle.com.
+
 ## Przykłady wizualizacji
 
 Poniżej przedstawiono przykłady wykresów stworzonych przy pomocy biblioteki Plotly:
