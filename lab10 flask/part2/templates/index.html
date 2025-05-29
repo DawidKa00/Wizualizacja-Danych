@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Quiz Python</h1>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-success" role="alert">
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <form method="POST" class="card p-4 shadow-sm">
+        {% for p in pytania %}
+        <div class="mb-4">
+            <h5>{{ p.pytanie }}</h5>
+            {% set pnr = loop.index0 %}
+            {% for o in p.odpowiedzi %}
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="{{ o }}"
+                       name="{{ pnr }}" id="{{ pnr }}-{{ loop.index }}" required>
+<!--                       {% if loop.index== 1 %}checked{% endif %}>-->
+<!--                    Ustawianie pierwszej odpowiedzi jako zaznaczoną-->
+                <label class="form-check-label" for="{{ pnr }}-{{ loop.index }}">
+                    {{ o }}
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit">Sprawdź odpowiedzi</button>
+            <a class="btn btn-secondary" type="button" href="{{ url_for('stats') }}">Zobacz statystyki</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
